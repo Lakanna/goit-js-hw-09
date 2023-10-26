@@ -16,17 +16,19 @@ elements.btnStop.addEventListener('click', handlerStop);
 function handlerStart() {
     if (!elements.btnStop.disabled) {
     return;
-    } 
-    timerId = setInterval(getColor, 1000);
+    };
+    
+    elements.btnStart.disabled = true;
     elements.btnStop.disabled = false;
-};
+    timerId = setInterval(getColor, 1000);
+    };
 
 function getColor() {
    
     const currentColor = getRandomHexColor();
     console.log(currentColor);
     elements.body.style.backgroundColor = currentColor;
-    elements.btnStart.disabled = true;
+    
 };
 
 function handlerStop() {
