@@ -40,8 +40,7 @@ flatpickr("#datetime-picker", options);
 function handlerClick(evt) {
  
   defer.btnStart.disabled = true;
-  
-    
+      
   setInterval(timeHandler, 1000);
 
   function timeHandler() {
@@ -50,7 +49,8 @@ function handlerClick(evt) {
     if (deltaTime <= 0) { 
       return;
     };
-    convertMs(deltaTime);
+    
+    let data = convertMs(deltaTime);
 
     defer.spanDays.textContent = data.days;
     defer.spanHours.textContent = addLeadingZero(data.hours);
@@ -67,9 +67,7 @@ function convertMs(ms) {
   const hour = minute * 60;
   const day = hour * 24;
 
-  const data = {};
-
-  // Remaining days
+    // Remaining days
   const days = Math.floor(ms / day);
   // Remaining hours
   const hours = Math.floor((ms % day) / hour);
@@ -77,8 +75,8 @@ function convertMs(ms) {
   const minutes = Math.floor(((ms % day) % hour) / minute);
   // Remaining seconds
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-
-  return data = { days, hours, minutes, seconds };
+  
+  return { days, hours, minutes, seconds };
 
 };
 
